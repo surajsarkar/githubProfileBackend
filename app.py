@@ -51,8 +51,9 @@ def fetch_and_organise_data(username: str):
 
     if not user_details.get("message") == "Not Found":
         prepared_user_and_repo_details = filter_repo_detail(userdata=user_details)
+        prepared_user_and_repo_details["user_present"] = True
         return prepared_user_and_repo_details
-    return {}
+    return {"user_present": False}
 
 
 @app.route("/api/user", methods = ["GET"])
