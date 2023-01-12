@@ -58,11 +58,8 @@ def fetch_and_organise_data(username: str):
 
 @app.route("/api/user", methods = ["GET"])
 def get_user_details():
-    result = {}
     username = request.args["name"]
-    # print(username)
     user_github_details = fetch_and_organise_data(username=username)
-    # print(user_github_details)
 
     return jsonify(user_github_details)
 
