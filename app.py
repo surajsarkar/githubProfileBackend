@@ -11,11 +11,11 @@ def request_user_details(username: str):
         return {
             "name": info["name"],
             "avatar_url": info["avatar_url"],
-            "bio":info["bio"],
+            "bio": info["bio"],
             "profile_link": info["html_url"],
             "location": info["location"],
             "twitter_username": info["twitter_username"],
-            "repos": info["repos_url"]
+            "repos": info["repos_url"],
         }
     return response.json()
 
@@ -39,7 +39,6 @@ def filter_repo_detail(userdata: dict):
     return userdata
 
 
-
 def filter_repo_language(languages_url: str):
     # todo: filter topoics intead of language
     response = requests.get(languages_url)
@@ -57,7 +56,7 @@ def fetch_and_organise_data(username: str):
     return {"user_present": False}
 
 
-@app.route("/api/user", methods = ["GET"])
+@app.route("/api/user", methods=["GET"])
 def get_user_details():
     username = request.args["name"]
     user_github_details = fetch_and_organise_data(username=username)
@@ -65,5 +64,5 @@ def get_user_details():
     return jsonify(user_github_details)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
