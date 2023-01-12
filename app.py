@@ -32,7 +32,7 @@ def filter_repo_detail(userdata: dict):
                 "name": repo["name"],
                 "description": repo["description"],
                 "url": repo["html_url"],
-                "languages_used": filter_repo_language(languages_url=repo["languages_url"]),
+                "topics": repo["topics"],
             }
             filtered_repos.append(filtered_repo)
     userdata["repos"] = filtered_repos
@@ -41,6 +41,7 @@ def filter_repo_detail(userdata: dict):
 
 
 def filter_repo_language(languages_url: str):
+    # todo: filter topoics intead of language
     response = requests.get(languages_url)
     if response.status_code == 200:
         return response.json()
