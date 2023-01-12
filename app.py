@@ -17,6 +17,7 @@ def request_user_details(username: str):
             "twitter_username": info["twitter_username"],
             "repos": info["repos_url"]
         }
+    return {}
 
 
 def filter_repo_detail(userdata: dict):
