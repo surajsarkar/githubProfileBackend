@@ -17,7 +17,7 @@ def request_user_details(username: str):
             "twitter_username": info["twitter_username"],
             "repos": info["repos_url"]
         }
-    return {}
+    return response.json()
 
 
 def filter_repo_detail(userdata: dict):
@@ -48,9 +48,8 @@ def filter_repo_language(languages_url: str):
 
 def fetch_and_organise_data(username: str):
     user_details = request_user_details(username)
-    print(type(user_details))
 
-    if not user_details.get("message", False):
+    if not user_details.get("message") == "Not Found":
         prepared_user_and_repo_details = filter_repo_detail(userdata=user_details)
         return prepared_user_and_repo_details
     return {}
