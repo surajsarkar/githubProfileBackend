@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import  CORS
 import requests
 
 app = Flask(__name__)
 
+CORS(app)
 
 def request_user_details(username: str):
     response = requests.get(f"https://api.github.com/users/{username}")
@@ -61,7 +63,8 @@ def get_user_details():
     username = request.args["name"]
     user_github_details = fetch_and_organise_data(username=username)
 
-    return jsonify(user_github_details)
+    response = jsonify(user_github_details)
+    return response
 
 
 if __name__ == "__main__":
