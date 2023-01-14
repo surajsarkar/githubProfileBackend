@@ -12,3 +12,9 @@
 ```python
 https://surajsarkar.pythonanywhere.com/api/user?name=<github_username>
 ```
+### Run test cases
+```commandline
+pytest <test_file_path>
+#eg
+pytest ./tests/test.py
+```
