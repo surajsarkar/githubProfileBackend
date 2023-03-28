@@ -42,7 +42,6 @@ def filter_repo_detail(userdata: dict):
 
 
 def filter_repo_language(languages_url: str):
-    # todo: filter topoics intead of language
     response = requests.get(languages_url)
     if response.status_code == 200:
         return response.json()
